@@ -17,7 +17,7 @@ opt.relativenumber = true
 -- other customisations (NOM)
 opt.scrolloff = 7
 
-opt.mouse = ""
+-- opt.mouse = ""
 
 
 local g = vim.g

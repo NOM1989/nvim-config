@@ -1,4 +1,4 @@
-local overrides = require("custom.configs.overrides")
+local overrides = require "custom.configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
@@ -12,14 +12,14 @@ local plugins = {
       {
         "jose-elias-alvarez/null-ls.nvim",
         config = function()
-          require("custom.configs.null-ls")
+          require "custom.configs.null-ls"
         end,
       },
     },
 
     config = function()
-      require("plugins.configs.lspconfig")
-      require("custom.configs.lspconfig")
+      require "plugins.configs.lspconfig"
+      require "custom.configs.lspconfig"
     end,
   },
 
@@ -57,8 +57,8 @@ local plugins = {
   {
     "MunifTanjim/prettier.nvim",
     config = function()
-      require("better_escape").setup({
-        bin = 'prettier', -- or `'prettierd'` (v0.23.3+)
+      require("better_escape").setup {
+        bin = "prettier", -- or `'prettierd'` (v0.23.3+)
         filetypes = {
           "css",
           "graphql",
@@ -73,37 +73,109 @@ local plugins = {
           "typescriptreact",
           "yaml",
         },
-      })
+      }
     end,
   },
 
-  {
-    "tpope/vim-surround",
-  },
+  -- Surround selections with specific chars
+  -- {
+  --   "tpope/vim-surround",
+  -- },
 
-  {
-    "Aasim-A/scrollEOF.nvim",
-    lazy = false,
-    config = function()
-      require('scrollEOF').setup({
-        -- The pattern used for the internal autocmd to determine
-        -- where to run scrollEOF. See https://neovim.io/doc/user/autocmd.html#autocmd-pattern
-        pattern = '*',
-        -- Whether or not scrollEOF should be enabled in insert mode
-        insert_mode = true,
-        -- List of filetypes to disable scrollEOF for.
-        disabled_filetypes = {},
-        -- List of modes to disable scrollEOF for. see https://neovim.io/doc/user/builtin.html#mode() for available modes.
-        disabled_modes = {},
-      })
-    end,
-  },
+  -- {
+  --   "Aasim-A/scrollEOF.nvim",
+  --   lazy = false,
+  --   config = function()
+  --     require("scrollEOF").setup {
+  --       -- The pattern used for the internal autocmd to determine
+  --       -- where to run scrollEOF. See https://neovim.io/doc/user/autocmd.html#autocmd-pattern
+  --       pattern = "*",
+  --       -- Whether or not scrollEOF should be enabled in insert mode
+  --       insert_mode = true,
+  --       -- List of filetypes to disable scrollEOF for.
+  --       disabled_filetypes = {},
+  --       -- List of modes to disable scrollEOF for. see https://neovim.io/doc/user/builtin.html#mode() for available modes.
+  --       disabled_modes = {},
+  --     }
+  --   end,
+  -- },
 
+  -- install without yarn or npm
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    ft = { "markdown", "txt", "pmul" },
-    build = function() vim.fn["mkdp#util#install"]() end,
+    build = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+  },
+
+  -- dim inactive windows
+  {
+    "andreadev-it/shade.nvim",
+    config = function()
+      require("shade").setup {
+        exclude_filetypes = { "NvimTree" },
+      }
+    end,
+  },
+
+  -- pretty diagnostics panel
+  {
+    "folke/trouble.nvim",
+    cmd = "Trouble",
+    config = function()
+      require("trouble").setup()
+    end,
+  },
+
+  -- autoclose tags in html, jsx only
+  {
+    "windwp/nvim-ts-autotag",
+    event = "InsertEnter",
+    config = function()
+      require("nvim-ts-autotag").setup()
+    end,
+  },
+
+  -- Smooth scrollin with C-u C-d
+  {
+    "karb94/neoscroll.nvim",
+    keys = { "<C-d>", "<C-u>", "<PageUp>", "<PageDown>", "zt", "zz", "zb" },
+    config = function()
+      require("neoscroll").setup {
+        stop_eof = false,
+      }
+
+      local t = {}
+      -- Syntax: t[keys] = {function, {function arguments}}
+      t["<C-u>"] = { "scroll", { "-vim.wo.scroll", "true", "200" } }
+      t["<C-d>"] = { "scroll", { "vim.wo.scroll", "true", "200" } }
+      t["<PageUp>"] = { "scroll", { "-vim.api.nvim_win_get_height(0)", "true", "300" } }
+      t["<PageDown>"] = { "scroll", { "vim.api.nvim_win_get_height(0)", "true", "300" } }
+      t["<C-y>"] = { "scroll", { "-0.10", "false", "50" } }
+      t["<C-e>"] = { "scroll", { "0.10", "false", "50" } }
+      t["zt"] = { "zt", { "200" } }
+      t["zz"] = { "zz", { "200" } }
+      t["zb"] = { "zb", { "200" } }
+
+      require("neoscroll.config").set_mappings(t)
+    end,
+  },
+
+  {
+    "stevearc/conform.nvim",
+    config = function()
+      require "custom.configs.conform"
+    end,
+  },
+
+  -- Persistence for nvim sessions (per workspace)
+  {
+    "folke/persistence.nvim",
+    event = "BufReadPre", -- this will only start session saving when an actual file was opened
+    opts = {
+      -- add any custom options here
+    }
   },
 
   -- {

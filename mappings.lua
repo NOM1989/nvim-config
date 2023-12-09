@@ -24,6 +24,11 @@ M.general = {
       end,
       "Toggle horizontal term",
     },
+    ["<C-CR>"] = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Jump to declaration" },
+
+    ["<leader>qs"] = { "<cmd>lua require('persistence').load()<CR>", "Restore the session for the current directory" },
+    ["<leader>ql"] = { "<cmd>lua require('persistence').load({ last = true})<CR>", "Restore the last session" },
+    ["<leader>qd"] = { "<cmd>lua require('persistence').stop()<CR>", "Stop Persistence - session won't be saved on exit" },
   },
 
   v = {
@@ -56,6 +61,30 @@ M.general = {
     ["<C-BS>"] = { "<C-w>", "Delete word" },
   },
 
+}
+
+M.shade = {
+  n = {
+    ["<Bslash>"] = {
+      function()
+        require("shade").toggle()
+      end,
+
+      "toggle shade.nvim",
+    },
+  },
+}
+
+M.lsp = {
+  n = {
+    ["<leader>fm"] = {
+
+      function()
+        require("conform").format()
+      end,
+      "format with conform",
+    },
+  },
 }
 
 -- more keybinds!
