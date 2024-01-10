@@ -29,6 +29,9 @@ M.general = {
     ["<leader>qs"] = { "<cmd>lua require('persistence').load()<CR>", "Restore the session for the current directory" },
     ["<leader>ql"] = { "<cmd>lua require('persistence').load({ last = true})<CR>", "Restore the last session" },
     ["<leader>qd"] = { "<cmd>lua require('persistence').stop()<CR>", "Stop Persistence - session won't be saved on exit" },
+
+    ["<A-Up>"] = { "ddkP", "Move line up" },
+    ["<A-Down>"] = { "ddp", "Move line down" },
   },
 
   v = {

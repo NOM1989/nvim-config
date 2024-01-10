@@ -178,6 +178,12 @@ local plugins = {
     }
   },
 
+
+  {
+    "eandrju/cellular-automaton.nvim",
+    cmd = "CellularAutomaton"
+  },
+
   -- {
   --   "github/copilot.vim",
   --   lazy = false,

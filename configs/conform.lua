@@ -8,7 +8,7 @@ local options = {
     css = { "prettier" },
     html = { "prettier" },
     json = { "prettier" },
-    python = { "pyright" }
+    python = { "black" }
   },
 }
 
