@@ -27,6 +27,7 @@ local sources = {
   b.formatting.rubocop,
   -- b.formatting.erb_format,
   b.diagnostics.erb_lint,
+  b.diagnostics.haml_lint,
 
   -- python
   b.formatting.black,

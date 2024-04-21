@@ -137,7 +137,7 @@ local plugins = {
     end,
   },
 
-  -- Smooth scrollin with C-u C-d
+  -- Smooth scrolling with C-u C-d
   {
     "karb94/neoscroll.nvim",
     keys = { "<C-d>", "<C-u>", "<PageUp>", "<PageDown>", "zt", "zz", "zb" },
@@ -175,13 +175,37 @@ local plugins = {
     event = "BufReadPre", -- this will only start session saving when an actual file was opened
     opts = {
       -- add any custom options here
-    }
+    },
   },
-
 
   {
     "eandrju/cellular-automaton.nvim",
-    cmd = "CellularAutomaton"
+    cmd = "CellularAutomaton",
+  },
+
+  {
+    "kdheepak/lazygit.nvim",
+    cmd = {
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile",
+    },
+    -- optional for floating window border decoration
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    -- setting the keybinding for LazyGit with 'keys' is recommended in
+    -- order to load the plugin when the command is run for the first time
+    keys = {
+      { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+    },
+  },
+
+  {
+    "tpope/vim-fugitive",
+    event = 'BufWinEnter',
   },
 
   -- {

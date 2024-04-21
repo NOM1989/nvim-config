@@ -3,7 +3,20 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
 
-local servers = { "html", "cssls", "tsserver", "clangd", "solargraph", "pyright", "jdtls", "hls", "prismals", "tailwindcss", "sqlls" }
+local servers = {
+  "astro",
+  "html",
+  "cssls",
+  "tsserver",
+  "clangd",
+  "solargraph",
+  "pyright",
+  "jdtls",
+  "hls",
+  "prismals",
+  "tailwindcss",
+  "sqlls",
+}
 
 -- custom diagnostic format, not sure why this didnt work in init.lua but here we are.
 local diagnostic_formatter = function(diagnostic)
@@ -19,7 +32,7 @@ local diagnostic_formatter = function(diagnostic)
   -- return diagnostic.message
 end
 
-vim.diagnostic.config({
+vim.diagnostic.config {
   -- see :help vim.diagnostic.config()
   --underline = false,
   virtual_text = {
@@ -28,7 +41,7 @@ vim.diagnostic.config({
   signs = true,
   -- update_in_insert = false,
   severity_sort = true,
-})
+}
 -- End of custom format
 
 for _, lsp in ipairs(servers) do
@@ -44,4 +57,3 @@ for _, lsp in ipairs(servers) do
     },
   }
 end
-
