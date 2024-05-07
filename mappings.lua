@@ -14,7 +14,7 @@ M.general = {
     ["<leader><leader>"] = { "<C-W><C-W>", "previous window" },
     ["ff"] = {
       function()
-        vim.diagnostic.open_float { border = "rounded", close_events = {"CursorMoved"} }
+        vim.diagnostic.open_float { border = "rounded", close_events = { "CursorMoved" } }
       end,
       "Floating diagnostic",
     },
@@ -26,12 +26,17 @@ M.general = {
     },
     ["<C-CR>"] = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Jump to declaration" },
 
-    ["<leader>qs"] = { "<cmd>lua require('persistence').load()<CR>", "Restore the session for the current directory" },
-    ["<leader>ql"] = { "<cmd>lua require('persistence').load({ last = true})<CR>", "Restore the last session" },
-    ["<leader>qd"] = { "<cmd>lua require('persistence').stop()<CR>", "Stop Persistence - session won't be saved on exit" },
+    ["<leader>zs"] = { "<cmd>lua require('persistence').load()<CR>", "Restore the session for the current directory" },
+    ["<leader>zl"] = { "<cmd>lua require('persistence').load({ last = true})<CR>", "Restore the last session" },
+    ["<leader>zd"] = {
+      "<cmd>lua require('persistence').stop()<CR>",
+      "Stop Persistence - session won't be saved on exit",
+    },
 
     ["<A-Up>"] = { "ddkP", "Move line up" },
     ["<A-Down>"] = { "ddp", "Move line down" },
+
+    ["<leader>q"] = { "<C-w>q", "Close current window" },
   },
 
   v = {
@@ -63,7 +68,6 @@ M.general = {
   i = {
     ["<C-BS>"] = { "<C-w>", "Delete word" },
   },
-
 }
 
 M.shade = {

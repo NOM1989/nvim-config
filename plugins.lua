@@ -100,13 +100,15 @@ local plugins = {
   --   end,
   -- },
 
-  -- install without yarn or npm
+  -- install with yarn or npm
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    build = function()
-      vim.fn["mkdp#util#install"]()
+    build = "cd app && pnpm install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
     end,
+    ft = { "markdown" },
   },
 
   -- dim inactive windows
@@ -205,7 +207,7 @@ local plugins = {
 
   {
     "tpope/vim-fugitive",
-    event = 'BufWinEnter',
+    event = "BufWinEnter",
   },
 
   -- {
