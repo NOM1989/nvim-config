@@ -112,14 +112,14 @@ local plugins = {
   },
 
   -- dim inactive windows
-  {
-    "andreadev-it/shade.nvim",
-    config = function()
-      require("shade").setup {
-        exclude_filetypes = { "NvimTree" },
-      }
-    end,
-  },
+  -- {
+  --   "andreadev-it/shade.nvim",
+  --   config = function()
+  --     require("shade").setup {
+  --       exclude_filetypes = { "NvimTree" },
+  --     }
+  --   end,
+  -- },
 
   -- pretty diagnostics panel
   {
@@ -185,6 +185,7 @@ local plugins = {
     cmd = "CellularAutomaton",
   },
 
+  -- LazyGit integration
   {
     "kdheepak/lazygit.nvim",
     cmd = {
@@ -205,9 +206,15 @@ local plugins = {
     },
   },
 
+  -- Git plugin
   {
     "tpope/vim-fugitive",
     event = "BufWinEnter",
+  },
+
+  {
+    "rhysd/vim-grammarous",
+    ft = { "txt", "md" },
   },
 
   -- {
