@@ -140,29 +140,29 @@ local plugins = {
   },
 
   -- Smooth scrolling with C-u C-d
-  {
-    "karb94/neoscroll.nvim",
-    keys = { "<C-d>", "<C-u>", "<PageUp>", "<PageDown>", "zt", "zz", "zb" },
-    config = function()
-      require("neoscroll").setup {
-        stop_eof = false,
-      }
-
-      local t = {}
-      -- Syntax: t[keys] = {function, {function arguments}}
-      t["<C-u>"] = { "scroll", { "-vim.wo.scroll", "true", "200" } }
-      t["<C-d>"] = { "scroll", { "vim.wo.scroll", "true", "200" } }
-      t["<PageUp>"] = { "scroll", { "-vim.api.nvim_win_get_height(0)", "true", "300" } }
-      t["<PageDown>"] = { "scroll", { "vim.api.nvim_win_get_height(0)", "true", "300" } }
-      t["<C-y>"] = { "scroll", { "-0.10", "false", "50" } }
-      t["<C-e>"] = { "scroll", { "0.10", "false", "50" } }
-      t["zt"] = { "zt", { "200" } }
-      t["zz"] = { "zz", { "200" } }
-      t["zb"] = { "zb", { "200" } }
-
-      require("neoscroll.config").set_mappings(t)
-    end,
-  },
+  -- {
+  --   "karb94/neoscroll.nvim",
+  --   keys = { "<C-d>", "<C-u>", "<PageUp>", "<PageDown>", "zt", "zz", "zb" },
+  --   config = function()
+  --     require("neoscroll").setup {
+  --       stop_eof = false,
+  --     }
+  --
+  --     local t = {}
+  --     -- Syntax: t[keys] = {function, {function arguments}}
+  --     t["<C-u>"] = { "scroll", { "-vim.wo.scroll", "true", "200" } }
+  --     t["<C-d>"] = { "scroll", { "vim.wo.scroll", "true", "200" } }
+  --     t["<PageUp>"] = { "scroll", { "-vim.api.nvim_win_get_height(0)", "true", "300" } }
+  --     t["<PageDown>"] = { "scroll", { "vim.api.nvim_win_get_height(0)", "true", "300" } }
+  --     t["<C-y>"] = { "scroll", { "-0.10", "false", "50" } }
+  --     t["<C-e>"] = { "scroll", { "0.10", "false", "50" } }
+  --     t["zt"] = { "zt", { "200" } }
+  --     t["zz"] = { "zz", { "200" } }
+  --     t["zb"] = { "zb", { "200" } }
+  --
+  --     require("neoscroll.config").set_mappings(t)
+  --   end,
+  -- },
 
   {
     "stevearc/conform.nvim",
@@ -180,41 +180,41 @@ local plugins = {
     },
   },
 
-  {
-    "eandrju/cellular-automaton.nvim",
-    cmd = "CellularAutomaton",
-  },
+  -- {
+  --   "eandrju/cellular-automaton.nvim",
+  --   cmd = "CellularAutomaton",
+  -- },
 
   -- LazyGit integration
-  {
-    "kdheepak/lazygit.nvim",
-    cmd = {
-      "LazyGit",
-      "LazyGitConfig",
-      "LazyGitCurrentFile",
-      "LazyGitFilter",
-      "LazyGitFilterCurrentFile",
-    },
-    -- optional for floating window border decoration
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    -- setting the keybinding for LazyGit with 'keys' is recommended in
-    -- order to load the plugin when the command is run for the first time
-    keys = {
-      { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
-    },
-  },
+  -- {
+  --   "kdheepak/lazygit.nvim",
+  --   cmd = {
+  --     "LazyGit",
+  --     "LazyGitConfig",
+  --     "LazyGitCurrentFile",
+  --     "LazyGitFilter",
+  --     "LazyGitFilterCurrentFile",
+  --   },
+  --   -- optional for floating window border decoration
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --   },
+  --   -- setting the keybinding for LazyGit with 'keys' is recommended in
+  --   -- order to load the plugin when the command is run for the first time
+  --   keys = {
+  --     { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+  --   },
+  -- },
 
   -- Git plugin
-  {
-    "tpope/vim-fugitive",
-    event = "BufWinEnter",
-  },
+  -- {
+  --   "tpope/vim-fugitive",
+  --   event = "BufWinEnter",
+  -- },
 
   {
     "rhysd/vim-grammarous",
-    ft = { "txt", "md" },
+    ft = { "tex", "md" },
   },
 
   -- {

@@ -33,6 +33,10 @@ local sources = {
   b.formatting.black,
   b.diagnostics.flake8,
 
+  -- zsh
+  b.formatting.beautysh,
+  b.diagnostics.zsh,
+
   -- spelling
   -- b.diagnostics.cspell,
   -- b.code_actions.cspell,

@@ -7,7 +7,7 @@ local servers = {
   "astro",
   "html",
   "cssls",
-  "tsserver",
+  "ts_ls",
   "clangd",
   "solargraph",
   "pyright",
